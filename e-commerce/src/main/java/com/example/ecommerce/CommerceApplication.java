@@ -10,10 +10,10 @@ import org.springframework.context.annotation.Bean;
 import java.time.LocalDateTime;
 
 @SpringBootApplication
-public class ECommerceApplication {
-
+public class CommerceApplication
+{
 	public static void main(String[] args) {
-		SpringApplication.run(ECommerceApplication.class, args);
+		SpringApplication.run(CommerceApplication.class, args);
 	}
 
 	@Bean
@@ -24,5 +24,4 @@ public class ECommerceApplication {
 			userRepository.insert(user);
 		};
 	}
-
 }
