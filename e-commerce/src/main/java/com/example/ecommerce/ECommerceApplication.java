@@ -20,9 +20,7 @@ public class ECommerceApplication {
 	CommandLineRunner runner(UserRepository userRepository)
 	{
 		return args -> {
-			User user = new User("Uygar", "Kaya", "uygarkaya@gmail.com",
-					"UKAYA", "uygarkaya", LocalDateTime.now());
-
+			User user = new User("Uygar", "Kaya", "uygarkaya@gmail.com", "UKAYA", "uygarkaya", LocalDateTime.now());
 			userRepository.insert(user);
 		};
 	}
