@@ -17,6 +17,7 @@ public class User
     private String surname;
     @Indexed(unique = true)
     private String email;
+    @Indexed(unique = true)
     private String username;
     private String password;
     private LocalDateTime dateTime;
