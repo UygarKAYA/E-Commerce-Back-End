@@ -1,11 +1,10 @@
 package com.example.ecommerce.controller;
 
 import com.example.ecommerce.model.PurchasedProducts;
-import com.example.ecommerce.repository.PurchasedProductRepository;
+import com.example.ecommerce.service.PurchasedProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -13,24 +12,15 @@ import java.util.List;
 @RequestMapping("api/purchasedProducts")
 public class PurchasedProductsController
 {
-    private final PurchasedProductRepository purchasedProductRepository;
+    private final PurchasedProductService purchasedProductService;
 
     @GetMapping("/allPurchasedProducts")
     public List<PurchasedProducts> fetchAllPurchasedProducts() {
-        return purchasedProductRepository.findAll();
+        return purchasedProductService.getAllPurchasedProducts();
     }
 
     @PostMapping("/addPurchasedProducts")
-    public void createPurchasedProducts(@RequestBody PurchasedProducts purchasedProducts)
-    {
-        purchasedProductRepository.findUserByEmail(purchasedProducts.getEmail()).ifPresentOrElse(
-                purchasedProductss -> {
-                    System.out.println("E-mail: " + purchasedProducts.getEmail() + " is already exist");
-                }, () -> {
-                    purchasedProducts.setDateTime(LocalDateTime.now());
-                    purchasedProductRepository.insert(purchasedProducts);
-                    // System.out.println("E-mail: " + purchasedProducts.getEmail() + " is added");
-                }
-        );
+    public void createPurchasedProducts(@RequestBody PurchasedProducts purchasedProducts) {
+        purchasedProductService.createNewPurchasedProducts(purchasedProducts);
     }
 }

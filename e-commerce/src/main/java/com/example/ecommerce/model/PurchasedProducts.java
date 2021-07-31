@@ -24,7 +24,8 @@ public class PurchasedProducts
     private int productQuantity;
     private LocalDateTime dateTime;
 
-    public PurchasedProducts(String firstName, String lastName, String email, String address, DetailedAddress detailedAddress, String productName, String productPrice, int productQuantity, LocalDateTime dateTime) {
+    public PurchasedProducts(String firstName, String lastName, String email, String address, DetailedAddress detailedAddress,
+                                String productName, String productPrice, int productQuantity, LocalDateTime dateTime) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

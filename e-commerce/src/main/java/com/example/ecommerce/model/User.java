@@ -22,7 +22,8 @@ public class User
     private String password;
     private LocalDateTime dateTime;
 
-    public User(String name, String surname, String email, String username, String password, LocalDateTime dateTime) {
+    public User(String name, String surname, String email, String username,
+                    String password, LocalDateTime dateTime) {
         this.name = name;
         this.surname = surname;
         this.email = email;
