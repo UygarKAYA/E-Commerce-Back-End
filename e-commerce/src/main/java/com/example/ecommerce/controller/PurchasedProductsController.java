@@ -23,4 +23,14 @@ public class PurchasedProductsController
     public void createPurchasedProducts(@RequestBody PurchasedProducts purchasedProducts) {
         purchasedProductService.createNewPurchasedProducts(purchasedProducts);
     }
+
+    @PutMapping("/updatePurchasedProducts/{ID}")
+    public PurchasedProducts updatePurchasedProducts(@PathVariable("ID") String ID, @RequestBody PurchasedProducts purchasedProducts) {
+        return purchasedProductService.updateExistPurchasedProducts(ID, purchasedProducts);
+    }
+
+    @DeleteMapping("/deletePurchasedProducts/{ID}")
+    public void deletePurchasedProducts(@PathVariable("ID") String ID) {
+        purchasedProductService.deleteExistPurchasedProducts(ID);
+    }
 }

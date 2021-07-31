@@ -8,5 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface PurchasedProductRepository extends MongoRepository<PurchasedProducts, String> {
-    Optional<PurchasedProducts> findUserByEmail(String email);
+    Optional<PurchasedProducts> findPurchasedProductByEmail(String email);
+    Optional<PurchasedProducts> findPurchasedProductByID(String ID);
 }

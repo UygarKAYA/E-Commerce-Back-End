@@ -5,8 +5,6 @@ import com.example.ecommerce.repository.PurchasedProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,9 +18,8 @@ public class PurchasedProductService
         return purchasedProductRepository.findAll();
     }
 
-    public void createNewPurchasedProducts(@RequestBody PurchasedProducts purchasedProducts)
-    {
-        purchasedProductRepository.findUserByEmail(purchasedProducts.getEmail()).ifPresentOrElse(
+    public void createNewPurchasedProducts(PurchasedProducts purchasedProducts) {
+        purchasedProductRepository.findPurchasedProductByEmail(purchasedProducts.getEmail()).ifPresentOrElse(
                 purchasedProductss -> {
                     System.out.println("E-mail: " + purchasedProducts.getEmail() + " is already exist");
                 }, () -> {
@@ -31,5 +28,15 @@ public class PurchasedProductService
                     // System.out.println("E-mail: " + purchasedProducts.getEmail() + " is added");
                 }
         );
+    }
+
+    public PurchasedProducts updateExistPurchasedProducts(String ID, PurchasedProducts purchasedProducts) {
+        purchasedProducts.setID(ID);
+        purchasedProducts.setDateTime(LocalDateTime.now());
+        return purchasedProductRepository.save(purchasedProducts);
+    }
+
+    public void deleteExistPurchasedProducts(String ID) {
+        purchasedProductRepository.deleteById(ID);
     }
 }
