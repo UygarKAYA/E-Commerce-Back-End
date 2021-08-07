@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -16,6 +17,10 @@ public class RequestProductService
 
     public List<RequestProduct> getAllRequestProduct() {
         return requestProductRepository.findAll();
+    }
+
+    public Optional<RequestProduct> getAllRequestProductByID(String ID) {
+        return requestProductRepository.findById(ID);
     }
 
     public void createNewRequestProducts(RequestProduct requestProduct) {

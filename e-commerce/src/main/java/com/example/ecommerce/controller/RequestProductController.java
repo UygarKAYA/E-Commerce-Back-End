@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -18,6 +19,11 @@ public class RequestProductController
     @GetMapping("/allRequestProducts")
     public List<RequestProduct> fetchAllRequestProducts() {
         return requestProductService.getAllRequestProduct();
+    }
+
+    @GetMapping("allRequestProductsByID/{ID}")
+    public Optional<RequestProduct> fetchAllRequestProductsByID(@PathVariable String ID) {
+        return requestProductService.getAllRequestProductByID(ID);
     }
 
     @PostMapping("/addRequestProducts")
