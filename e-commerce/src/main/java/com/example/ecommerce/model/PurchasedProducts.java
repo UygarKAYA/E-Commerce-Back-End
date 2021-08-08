@@ -18,19 +18,25 @@ public class PurchasedProducts
     @Indexed(unique = true)
     private String email;
     private String address;
-    private DetailedAddress detailedAddress;
+    private String country;
+    private String city;
+    private String town;
+    private int zipCode;
     private String productName;
     private String productPrice;
     private int productQuantity;
     private LocalDateTime dateTime;
 
-    public PurchasedProducts(String firstName, String lastName, String email, String address, DetailedAddress detailedAddress,
-                                String productName, String productPrice, int productQuantity, LocalDateTime dateTime) {
+    public PurchasedProducts(String firstName, String lastName, String email, String address, String country, String city, String town,
+                                int zipCode, String productName, String productPrice, int productQuantity, LocalDateTime dateTime) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.address = address;
-        this.detailedAddress = detailedAddress;
+        this.country = country;
+        this.city = city;
+        this.town = town;
+        this.zipCode = zipCode;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQuantity = productQuantity;
